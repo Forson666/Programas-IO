@@ -43,7 +43,8 @@ def valorOptimo(etapa, estado):
     else:
         # El costo optimo para un estado en la etapa n es el valor minimo de la suma entre el costo inmediato
         # de tomar una decision x y el valorOptimo de esa decision x en la etapa n + 1(recursividad)
-        aux = [(matrizCostos[estado][x] + valorOptimo(etapa + 1, x), identificadores[x], etapa, identificadores[estado]) for x in range(fin +  1) if matrizCostos[estado][x] != -1]
+        aux = [(matrizCostos[estado][x] + valorOptimo(etapa + 1, x), identificadores[x], etapa,
+                identificadores[estado]) for x in range(fin +  1) if matrizCostos[estado][x] != -1]
         
         # Guardo en la lista los valores optimos que no esten
         for x in aux:
@@ -75,7 +76,7 @@ for x in range(n):
     # Imprimo la etapa en la que me encuentro
     print(f"Etapa {x + 1}")
     
-    # Guardo en una variable auxiliar los valores de optimos de la etapa
+    # Guardo en una variable auxiliar los valores optimos de la etapa
     valoresDeEtapa = [y for y in lista if y[2] == x + 1]
     
     # Guardo los posibles estados iniciales de cada etapa
@@ -99,9 +100,11 @@ for x in range(n):
         mensaje = mensaje[:-1]
         print(mensaje)
 print()
-# Imprimo el costo optimo de de las decisiones del problema
+# Imprimo el costo optimo de las decisiones del problema
 print(f"Costo optimo = {costooptimo} ")
 print()
 # Imprimo una ruta de decision optima
 camino(inicio, fin)
 
+# Linea para que no se cierre al ejecutar en consola
+input("Presione cualquier tecla para terminar...")
